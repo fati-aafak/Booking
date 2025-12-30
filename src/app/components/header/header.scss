@@ -125,15 +125,16 @@
     .btn-quote {
       background: transparent;
       color: #FF6B35;
-      border: 2px solid #FF6B35;
+      border: 2px ;
+      background: #FFECE0;
 
       &:hover {
-        background: #FFF5F2;
+        background: #FFECE0;
       }
     }
 
     .btn-signup {
-      background: #1E40AF;
+      background: #0739A4;
       color: white;
 
       &:hover {
@@ -146,6 +147,7 @@
     .btn-login {
       background: transparent;
       color: #334155;
+       border: 2px solid #0739A4;
 
       &:hover {
         background: #F1F5F9;

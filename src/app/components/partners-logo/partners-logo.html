@@ -4,14 +4,14 @@
       <div class="partners-track">
         <div class="partner" *ngFor="let partner of partners">
           <img
-            [src]="'images/partners/Logo wrapper (' + getPartnerIndex(partner.name) + ').png'"
+            [src]="getPartnerLogoPath(partner)"
             [alt]="partner.name + ' logo'"
             class="partner-logo"
           />
         </div>
         <div class="partner" *ngFor="let partner of partners">
           <img
-            [src]="'images/partners/Logo wrapper (' + getPartnerIndex(partner.name) + ').png'"
+            [src]="getPartnerLogoPath(partner)"
             [alt]="partner.name + ' logo'"
             class="partner-logo"
           />

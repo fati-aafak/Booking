@@ -56,22 +56,20 @@
         <!-- Date Selection (Above To field) -->
         <div class="form-group date-group">
           <div class="date-toggle">
-            <label class="toggle-option" [class.active]="!searchForm.isInterval">
+            <label class="toggle-option">
               <input 
                 type="radio" 
                 name="dateType" 
                 [value]="false"
-                [checked]="!searchForm.isInterval"
-                (change)="searchForm.isInterval = false">
+                [(ngModel)]="searchForm.isInterval">
               <span>Specific day</span>
             </label>
-            <label class="toggle-option" [class.active]="searchForm.isInterval">
+            <label class="toggle-option">
               <input 
                 type="radio" 
                 name="dateType" 
                 [value]="true"
-                [checked]="searchForm.isInterval"
-                (change)="searchForm.isInterval = true">
+                [(ngModel)]="searchForm.isInterval">
               <span>Interval</span>
             </label>
           </div>
