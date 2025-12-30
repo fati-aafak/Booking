@@ -17,7 +17,7 @@ interface ShippingType {
 })
 export class SearchFormComponent {
   transportTypes: ShippingType[] = [
-    { value: 'marine', label: 'Marine', icon: '🚢' },
+    { value: 'marine', label: 'Marine', icon: '⚓' },
     { value: 'flight', label: 'Flight', icon: '✈️' },
     { value: 'truck', label: 'Truck', icon: '🚚' }
   ];
@@ -48,11 +48,10 @@ export class SearchFormComponent {
   ];
 
   sortOptions = [
-    { value: 'fastest', label: 'Sort by fastest trips' },
-    { value: 'cheapest', label: 'Sort by cheapest trips' }
+    { value: 'fastest', label: 'Sort by fastest trips', checked: false },
+    { value: 'cheapest', label: 'Sort by cheapest trips', checked: false }
   ];
 
-  selectedSort = 'fastest';
   resultsCount = 129429;
 
   selectTransport(type: string) {

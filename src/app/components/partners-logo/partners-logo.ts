@@ -26,4 +26,11 @@ export class PartnersLogoComponent {
     { name: 'PIL' },
     { name: 'ZIM' }
   ];
+
+  // Méthode pour obtenir l'index du logo (1 à 9 + wrapper.png)
+  getPartnerIndex(partnerName: string): number | string {
+    const index = this.partners.findIndex(p => p.name === partnerName) + 1;
+    // Si c'est le dernier (10ème), retourner juste le nom sans numéro
+    return index === 10 ? '' : index;
+  }
 }

@@ -1,1 +1,13 @@
-<p>partners-logo works!</p>
+<div class="partners-section">
+  <div class="partners-container">
+    <div class="partners-box">
+      <div class="partner" *ngFor="let partner of partners">
+        <img
+          [src]="'images/parteners/Logo wrapper (' + getPartnerIndex(partner.name) + ').png'"
+          [alt]="partner.name + ' logo'"
+          class="partner-logo"
+        />
+      </div>
+    </div>
+  </div>
+</div>
