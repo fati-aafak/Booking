@@ -1,0 +1,37 @@
+<div class="top-banner">
+  <p>Are you a freight forwarder? Or shipper?</p>
+  <button class="join-btn">Join our marketplace →</button>
+</div>
+
+<header class="header">
+  <div class="container">
+    <div class="header-content">
+      <!-- Logo -->
+      <div class="logo">
+  <img src="assets/images/Logo.png" alt="Booking Container" width="150">
+  <span class="logo-text">
+    <strong>Booking</strong><br>
+    <small>Container</small>
+  </span>
+</div>
+
+      <!-- Navigation -->
+      <nav class="nav">
+        <a *ngFor="let item of navItems" 
+           [href]="item.link" 
+           [class.active]="item.active"
+           [class.external]="item.external">
+          {{ item.label }}
+          <span *ngIf="item.external" class="external-icon">↗</span>
+        </a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="actions">
+        <button class="btn-quote">Request a quote 📋</button>
+        <button class="btn-signup">Sign up for Free ✨</button>
+        <button class="btn-login">Login →</button>
+      </div>
+    </div>
+  </div>
+</header>

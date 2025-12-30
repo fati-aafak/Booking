@@ -1,12 +1,21 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HeaderComponent } from './components/header/header';
+import { HeroSectionComponent } from './components/hero-section/hero-section';
+import { PartnersLogoComponent } from './components/partners-logo/partners-logo';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [
+    CommonModule,
+    HeaderComponent,
+    HeroSectionComponent,
+    PartnersLogoComponent
+  ],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrls: ['./app.scss']
 })
-export class App {
-  protected readonly title = signal('booking-container');
+export class AppComponent {
+  title = 'booking-container';
 }

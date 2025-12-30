@@ -1,0 +1,50 @@
+.partners-section {
+  background: #F8FAFC;
+  padding: 60px 0;
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .partners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 40px;
+    align-items: center;
+    justify-items: center;
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+  }
+
+  .partner-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+
+    span {
+      font-weight: 700;
+      font-size: 18px;
+      color: #64748B;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    &:hover {
+      filter: grayscale(0%);
+      opacity: 1;
+      transform: scale(1.05);
+
+      span {
+        color: #334155;
+      }
+    }
+  }
+}

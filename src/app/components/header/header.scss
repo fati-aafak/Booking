@@ -1,0 +1,170 @@
+.top-banner {
+  background: linear-gradient(90deg, #FF6B35 0%, #FF8C42 100%);
+  color: white;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-size: 14px;
+
+  p {
+    margin: 0;
+  }
+
+  .join-btn {
+    background: white;
+    color: #FF6B35;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+  }
+}
+
+.header {
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #1E40AF;
+
+    .logo-text {
+      line-height: 1.2;
+
+      strong {
+        font-size: 18px;
+        display: block;
+      }
+
+      small {
+        font-size: 14px;
+        color: #64748b;
+      }
+    }
+  }
+
+  .nav {
+    display: flex;
+    gap: 32px;
+
+    a {
+      color: #334155;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      padding: 8px 0;
+      transition: color 0.3s ease;
+
+      &.active {
+        color: #1E40AF;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 2px;
+          background: #1E40AF;
+        }
+      }
+
+      &:hover {
+        color: #1E40AF;
+      }
+
+      .external-icon {
+        font-size: 12px;
+        margin-left: 4px;
+      }
+    }
+  }
+
+  .actions {
+    display: flex;
+    gap: 12px;
+
+    button {
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      font-size: 14px;
+    }
+
+    .btn-quote {
+      background: transparent;
+      color: #FF6B35;
+      border: 2px solid #FF6B35;
+
+      &:hover {
+        background: #FFF5F2;
+      }
+    }
+
+    .btn-signup {
+      background: #1E40AF;
+      color: white;
+
+      &:hover {
+        background: #1E3A8A;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+      }
+    }
+
+    .btn-login {
+      background: transparent;
+      color: #334155;
+
+      &:hover {
+        background: #F1F5F9;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+
+  .actions {
+    gap: 8px;
+
+    button {
+      padding: 8px 12px;
+      font-size: 12px;
+    }
+  }
+}
