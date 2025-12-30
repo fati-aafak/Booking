@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -16,6 +16,8 @@ interface ShippingType {
   styleUrls: ['./search-form.scss']
 })
 export class SearchFormComponent {
+  @Output() transportChanged = new EventEmitter<string>();
+
   transportTypes: ShippingType[] = [
     { value: 'marine', label: 'Marine', icon: '⚓' },
     { value: 'flight', label: 'Flight', icon: '✈️' },
@@ -56,6 +58,12 @@ export class SearchFormComponent {
 
   selectTransport(type: string) {
     this.selectedTransport = type;
+    this.transportChanged.emit(type);
+  }
+
+  toggleSchedules() {
+    this.showSchedules = !this.showSchedules;
+    this.transportChanged.emit('schedules');
   }
 
   onSearch() {

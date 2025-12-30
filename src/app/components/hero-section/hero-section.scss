@@ -6,11 +6,11 @@
   padding: 60px 0;
   overflow: hidden;
   
-  // Background image
-  background-image: url('/images/backhero.jpg');
+  // Background image (will be set dynamically)
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  transition: background-image 0.3s ease-in-out;
   
   .hero-overlay {
     position: absolute;

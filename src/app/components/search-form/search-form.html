@@ -10,7 +10,7 @@
       <span class="tab-label">{{ type.label }}</span>
     </button>
     
-    <button class="schedules-btn" (click)="showSchedules = !showSchedules">
+    <button class="schedules-btn" (click)="toggleSchedules()">
       <span class="schedules-icon">📅</span>
       <span>Schedules</span>
     </button>
@@ -139,10 +139,6 @@
       </button>
     </div>
 
-    <!-- Company Logos -->
-    <div class="company-logos">
-      <div class="logo-item">Hapag-Lloyd</div>
-      <div class="logo-item">ONE</div>
-    </div>
+  
   </form>
 </div>
