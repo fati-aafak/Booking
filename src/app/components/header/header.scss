@@ -27,6 +27,22 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
   }
+
+  @media (max-width: 768px) {
+    padding: 10px 16px;
+    font-size: 12px;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    p {
+      text-align: center;
+    }
+
+    .join-btn {
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+  }
 }
 
 .header {
@@ -47,6 +63,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 16px 0;
+    position: relative;
   }
 
   .logo {
@@ -55,6 +72,12 @@
     gap: 12px;
     text-decoration: none;
     color: #1E40AF;
+    z-index: 101;
+
+    img {
+      max-height: 40px;
+      width: auto;
+    }
 
     .logo-text {
       line-height: 1.2;
@@ -69,6 +92,53 @@
         color: #64748b;
       }
     }
+
+    @media (max-width: 768px) {
+      img {
+        max-height: 32px;
+      }
+    }
+  }
+
+  .mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 101;
+    position: relative;
+
+    span {
+      width: 100%;
+      height: 3px;
+      background: #334155;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+      transform-origin: center;
+    }
+
+    &.active {
+      span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+      }
+
+      span:nth-child(2) {
+        opacity: 0;
+      }
+
+      span:nth-child(3) {
+        transform: rotate(-45deg) translate(8px, -8px);
+      }
+    }
+
+    @media (max-width: 1024px) {
+      display: flex;
+    }
   }
 
   .nav {
@@ -82,6 +152,7 @@
       position: relative;
       padding: 8px 0;
       transition: color 0.3s ease;
+      white-space: nowrap;
 
       &.active {
         color: #1E40AF;
@@ -106,11 +177,59 @@
         margin-left: 4px;
       }
     }
+
+    @media (max-width: 1024px) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: white;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 80px;
+      gap: 0;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 100;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+
+      &.mobile-open {
+        transform: translateX(0);
+      }
+
+      a {
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+        border-bottom: 1px solid #E5E7EB;
+        font-size: 18px;
+
+        &.active::after {
+          display: none;
+        }
+
+        &.active {
+          background: #EFF6FF;
+          color: #1E40AF;
+        }
+
+        &:hover {
+          background: #F9FAFB;
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
+      padding-top: 70px;
+    }
   }
 
   .actions {
     display: flex;
     gap: 12px;
+    align-items: center;
 
     button {
       padding: 10px 20px;
@@ -120,12 +239,22 @@
       transition: all 0.3s ease;
       border: none;
       font-size: 14px;
+      white-space: nowrap;
+    }
+
+    /* icon inside the buttons */
+    .btn-icon {
+      width: 18px;
+      height: 18px;
+      display: inline-block;
+      margin-right: 8px;
+      vertical-align: -2px;
     }
 
     .btn-quote {
       background: transparent;
       color: #FF6B35;
-      border: 2px ;
+      border: 2px;
       background: #FFECE0;
 
       &:hover {
@@ -147,26 +276,68 @@
     .btn-login {
       background: transparent;
       color: #334155;
-       border: 2px solid #0739A4;
+      border: 2px solid #0739A4;
 
       &:hover {
         background: #F1F5F9;
       }
     }
+
+    @media (max-width: 1024px) {
+      gap: 8px;
+
+      .btn-quote {
+        display: none;
+      }
+
+      button {
+        padding: 8px 16px;
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      gap: 6px;
+
+      .btn-signup {
+        display: none;
+      }
+
+      button {
+        padding: 8px 12px;
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .btn-login {
+        padding: 6px 10px;
+        font-size: 11px;
+      }
+    }
   }
 }
 
-@media (max-width: 768px) {
-  .nav {
-    display: none;
-  }
+// Mobile menu overlay
+.mobile-overlay {
+  display: none;
 
-  .actions {
-    gap: 8px;
+  @media (max-width: 1024px) {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 
-    button {
-      padding: 8px 12px;
-      font-size: 12px;
+    &.active {
+      opacity: 1;
+      visibility: visible;
     }
   }
 }

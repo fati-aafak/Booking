@@ -2,10 +2,15 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-interface ShippingType {
+interface TransportType {
   value: string;
   label: string;
-  icon: string;
+}
+
+interface SortOption {
+  value: string;
+  label: string;
+  checked: boolean;
 }
 
 @Component({
@@ -17,11 +22,12 @@ interface ShippingType {
 })
 export class SearchFormComponent {
   @Output() transportChanged = new EventEmitter<string>();
+  @Output() searchSubmitted = new EventEmitter<any>();
 
-  transportTypes: ShippingType[] = [
-    { value: 'marine', label: 'Marine', icon: '⚓' },
-    { value: 'flight', label: 'Flight', icon: '✈️' },
-    { value: 'truck', label: 'Truck', icon: '🚚' }
+  transportTypes: TransportType[] = [
+    { value: 'marine', label: 'Marine' },
+    { value: 'flight', label: 'Flight' },
+    { value: 'truck', label: 'Truck' }
   ];
 
   selectedTransport = 'marine';
@@ -39,6 +45,7 @@ export class SearchFormComponent {
   shippingTypes = [
     'Full container load (FCL)',
     'Less than container load (LCL)',
+    'Bulk cargo',
     'Break bulk'
   ];
 
@@ -46,27 +53,40 @@ export class SearchFormComponent {
     "20' Standard",
     "40' Standard",
     "40' High Cube",
-    "45' High Cube"
+    "45' High Cube",
+    "20' Refrigerated",
+    "40' Refrigerated"
   ];
 
-  sortOptions = [
+  sortOptions: SortOption[] = [
     { value: 'fastest', label: 'Sort by fastest trips', checked: false },
     { value: 'cheapest', label: 'Sort by cheapest trips', checked: false }
   ];
 
   resultsCount = 129429;
 
-  selectTransport(type: string) {
+  selectTransport(type: string): void {
     this.selectedTransport = type;
     this.transportChanged.emit(type);
   }
 
-  toggleSchedules() {
+  toggleSchedules(): void {
     this.showSchedules = !this.showSchedules;
     this.transportChanged.emit('schedules');
   }
 
-  onSearch() {
-    console.log('Searching with:', this.searchForm);
+  onSearch(): void {
+    const selectedSortOptions = this.sortOptions
+      .filter(option => option.checked)
+      .map(option => option.value);
+
+    const searchData = {
+      ...this.searchForm,
+      transport: this.selectedTransport,
+      sortBy: selectedSortOptions
+    };
+
+    console.log('Searching with:', searchData);
+    this.searchSubmitted.emit(searchData);
   }
 }

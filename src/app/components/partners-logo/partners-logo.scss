@@ -1,18 +1,17 @@
 .partners-section {
-  background: #F8FAFC;
+  background: #ffffff;
   padding: 40px 0;
 
   .partners-container {
-    max-width: 1200px;
+    max-width: 1250px;
     margin: 0 auto;
     padding: 0 20px;
   }
 
   .partners-box {
     background: #ffffff;
-    border-radius: 8px;
-    padding: 16px 22px;
-    box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+    border-radius: 0;
+    padding: 32px 40px;
     overflow: hidden;
     width: 100%;
   }
@@ -20,12 +19,13 @@
   .partners-track {
     display: flex;
     align-items: center;
-    gap: 36px;
+    justify-content: center;
+    gap: 60px;
     width: max-content;
-    animation: scroll-left 28s linear infinite;
+    animation: scroll-left 30s linear infinite;
   }
 
-  /* Pause scrolling on hover for accessibility */
+  /* Pause scrolling on hover */
   .partners-box:hover .partners-track {
     animation-play-state: paused;
   }
@@ -38,18 +38,19 @@
   }
 
   .partner-logo {
-    height: 40px;
-    max-height: 40px;
+    height: 45px;
+    max-height: 45px;
+    width: auto;
     display: block;
     filter: grayscale(100%);
-    opacity: 0.65;
+    opacity: 0.7;
     transition: transform 180ms ease, opacity 180ms ease, filter 180ms ease;
   }
 
   .partner-logo:hover {
     filter: grayscale(0%);
     opacity: 1;
-    transform: scale(1.03);
+    transform: scale(1.05);
   }
 
   @keyframes scroll-left {
@@ -59,18 +60,17 @@
 
   @media (max-width: 768px) {
     .partners-box {
-      padding: 12px 16px;
+      padding: 20px 16px;
     }
 
     .partners-track {
-      gap: 18px;
-      animation-duration: 18s;
-      justify-content: center;
+      gap: 30px;
+      animation-duration: 20s;
     }
 
     .partner-logo {
-      height: 32px;
-      max-height: 32px;
+      height: 35px;
+      max-height: 35px;
     }
   }
 }

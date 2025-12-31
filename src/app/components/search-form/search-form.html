@@ -6,12 +6,12 @@
       class="transport-tab"
       [class.active]="selectedTransport === type.value"
       (click)="selectTransport(type.value)">
-      <span class="tab-icon">{{ type.icon }}</span>
+      <img class="tab-icon" [src]="'/images/icons/' + type.value + '.svg'" [alt]="type.label + ' icon'" />
       <span class="tab-label">{{ type.label }}</span>
     </button>
     
     <button class="schedules-btn" (click)="toggleSchedules()">
-      <span class="schedules-icon">📅</span>
+      <img class="schedules-icon" src="/images/icons/shedules.svg" alt="Schedules icon" />
       <span>Schedules</span>
     </button>
   </div>
@@ -20,102 +20,98 @@
   <form class="search-form" (ngSubmit)="onSearch()">
     <!-- Main Form Grid -->
     <div class="form-grid">
-      <!-- Left Column -->
-      <div class="form-column">
-        <div class="form-group from-group">
-          <label for="from">From</label>
-          <div class="input-wrapper">
-            <span class="input-icon">📍</span>
-            <input 
-              type="text" 
-              id="from"
-              [(ngModel)]="searchForm.from"
-              name="from"
-              placeholder="e.g. Casablanca port, MA"
-              class="form-control">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="shippingType">Shipping type</label>
-          <div class="input-wrapper">
-            <select 
-              id="shippingType"
-              [(ngModel)]="searchForm.shippingType"
-              name="shippingType"
-              class="form-control">
-              <option value="" disabled selected>e.g. Full container load (FCL)</option>
-              <option *ngFor="let type of shippingTypes" [value]="type">{{ type }}</option>
-            </select>
-          </div>
+      <!-- First Row: From and To -->
+      <div class="form-group from-group">
+        <label for="from">From</label>
+        <div class="input-wrapper">
+          <img class="input-icon" src="/images/icons/maps.svg" alt="Map icon" />
+          <input 
+            type="text" 
+            id="from"
+            [(ngModel)]="searchForm.from"
+            name="from"
+            placeholder="e.g. Casablanca port, MA"
+            class="form-control">
         </div>
       </div>
 
-      <!-- Right Column -->
-      <div class="form-column">
-        <!-- Date Selection (Above To field) -->
-        <div class="form-group date-group">
-          <div class="date-toggle">
-            <label class="toggle-option">
-              <input 
-                type="radio" 
-                name="dateType" 
-                [value]="false"
-                [(ngModel)]="searchForm.isInterval">
-              <span>Specific day</span>
-            </label>
-            <label class="toggle-option">
-              <input 
-                type="radio" 
-                name="dateType" 
-                [value]="true"
-                [(ngModel)]="searchForm.isInterval">
-              <span>Interval</span>
-            </label>
-          </div>
-          <div class="input-wrapper">
-            <span class="input-icon">📅</span>
-            <input 
-              type="text" 
-              id="date"
-              [(ngModel)]="searchForm.date"
-              name="date"
-              placeholder="Select a date"
-              class="form-control"
-              onfocus="(this.type='date')"
-              onblur="(this.type='text')">
-          </div>
+      <div class="form-group to-group">
+        <label for="to">To</label>
+        <div class="input-wrapper">
+          <img class="input-icon" src="/images/icons/maps.svg" alt="Map icon" />
+          <input 
+            type="text" 
+            id="to"
+            [(ngModel)]="searchForm.to"
+            name="to"
+            placeholder="e.g. Mallorca, SPA"
+            class="form-control">
         </div>
+      </div>
 
-        <div class="form-group to-group">
-          <label for="to">To</label>
-          <div class="input-wrapper">
-            <span class="input-icon">📍</span>
-            <input 
-              type="text" 
-              id="to"
-              [(ngModel)]="searchForm.to"
-              name="to"
-              placeholder="e.g. Mallorca, SPA"
-              class="form-control">
-          </div>
+      <!-- Second Row: Shipping type and Transport unit type -->
+      <div class="form-group">
+        <label for="shippingType">Shipping type</label>
+        <div class="input-wrapper">
+          <select 
+            id="shippingType"
+            [(ngModel)]="searchForm.shippingType"
+            name="shippingType"
+            class="form-control">
+            <option value="" disabled selected>e.g. Full container load (FCL)</option>
+            <option *ngFor="let type of shippingTypes" [value]="type">{{ type }}</option>
+          </select>
         </div>
+      </div>
 
-        <div class="form-group">
-          <label for="transportUnit">
-            Transport unit type
-            <span class="info-icon" title="Information about transport unit types">ℹ️</span>
+      <div class="form-group">
+        <label for="transportUnit">
+          Transport unit type
+          <span class="info-icon" title="Information about transport unit types">ℹ️</span>
+        </label>
+        <div class="input-wrapper">
+          <select 
+            id="transportUnit"
+            [(ngModel)]="searchForm.transportUnit"
+            name="transportUnit"
+            class="form-control">
+            <option value="" disabled selected>e.g. 20' Standard</option>
+            <option *ngFor="let unit of transportUnits" [value]="unit">{{ unit }}</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Third Row: Date Selection (full width) -->
+      <div class="form-group date-group full-width">
+        <div class="date-toggle">
+          <label class="toggle-option" [class.active]="!searchForm.isInterval" (click)="searchForm.isInterval = false">
+            <input 
+              type="radio" 
+              name="dateType" 
+              [checked]="!searchForm.isInterval"
+              (change)="searchForm.isInterval = false">
+            <span>Specific day</span>
           </label>
-          <div class="input-wrapper">
-            <select 
-              id="transportUnit"
-              [(ngModel)]="searchForm.transportUnit"
-              name="transportUnit"
-              class="form-control">
-              <option value="" disabled selected>e.g. 20' Standard</option>
-              <option *ngFor="let unit of transportUnits" [value]="unit">{{ unit }}</option>
-            </select>
-          </div>
+          <label class="toggle-option" [class.active]="searchForm.isInterval" (click)="searchForm.isInterval = true">
+            <input 
+              type="radio" 
+              name="dateType" 
+              [checked]="searchForm.isInterval"
+              (change)="searchForm.isInterval = true">
+            <span>Interval</span>
+          </label>
+        </div>
+        <div class="input-wrapper">
+          <img class="input-icon" src="/images/icons/date.svg" alt="Date icon" />
+          <input 
+            type="text" 
+            id="date"
+            [(ngModel)]="searchForm.date"
+            name="date"
+            placeholder="Select a date"
+            class="form-control"
+            onfocus="(this.type='date')"
+            onblur="(this.type='text')">
         </div>
       </div>
     </div>
@@ -135,7 +131,7 @@
 
       <button type="submit" class="search-btn">
         <span>Show {{ resultsCount | number }} results</span>
-        <span class="search-icon">🔍</span>
+        <img class="search-icon" src="/images/icons/search.svg" alt="Search icon" />
       </button>
     </div>
 

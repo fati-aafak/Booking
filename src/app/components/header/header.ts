@@ -9,6 +9,8 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./header.scss']
 })
 export class HeaderComponent {
+  isMobileMenuOpen = false;
+
   navItems = [
     { label: 'Home', link: '/', active: true },
     { label: 'Marketplace', link: '/marketplace', external: true },
@@ -16,4 +18,12 @@ export class HeaderComponent {
     { label: 'About us', link: '/about' },
     { label: 'Contact', link: '/contact' }
   ];
+
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  closeMobileMenu(): void {
+    this.isMobileMenuOpen = false;
+  }
 }

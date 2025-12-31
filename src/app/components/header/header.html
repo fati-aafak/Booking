@@ -11,12 +11,28 @@
         <img src="/images/logo.png" alt="Booking Container" >
       </div>
 
+      <!-- Hamburger Menu Button (Mobile Only) -->
+      <button class="mobile-menu-toggle" 
+              (click)="toggleMobileMenu()"
+              [class.active]="isMobileMenuOpen"
+              aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Mobile Menu Overlay -->
+      <div class="mobile-overlay" 
+           [class.active]="isMobileMenuOpen"
+           (click)="closeMobileMenu()"></div>
+
       <!-- Navigation -->
-      <nav class="nav">
+      <nav class="nav" [class.mobile-open]="isMobileMenuOpen">
         <a *ngFor="let item of navItems" 
            [href]="item.link" 
            [class.active]="item.active"
-           [class.external]="item.external">
+           [class.external]="item.external"
+           (click)="closeMobileMenu()">
           {{ item.label }}
           <span *ngIf="item.external" class="external-icon">↗</span>
         </a>
@@ -24,9 +40,9 @@
 
       <!-- Action Buttons -->
       <div class="actions">
-        <button class="btn-quote">Request a quote 📋</button>
-        <button class="btn-signup">Sign up for Free ✨</button>
-        <button class="btn-login">Login →</button>
+        <button class="btn-quote"><img src="/images/icons/request.svg" alt="" aria-hidden="true" class="btn-icon">Request a quote</button>
+        <button class="btn-signup"><img src="/images/icons/sign%20up.svg" alt="" aria-hidden="true" class="btn-icon">Sign up for Free</button>
+        <button class="btn-login"><img src="/images/icons/login.svg" alt="" aria-hidden="true" class="btn-icon">Login</button>
       </div>
     </div>
   </div>
