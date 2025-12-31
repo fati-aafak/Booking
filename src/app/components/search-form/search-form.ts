@@ -44,18 +44,14 @@ export class SearchFormComponent {
 
   shippingTypes = [
     'Full container load (FCL)',
-    'Less than container load (LCL)',
-    'Bulk cargo',
-    'Break bulk'
+    'Less container load (LCL)',
+    'Bulk',
+    
   ];
 
   transportUnits = [
-    "20' Standard",
-    "40' Standard",
-    "40' High Cube",
-    "45' High Cube",
-    "20' Refrigerated",
-    "40' Refrigerated"
+    "Casablanca Port,MA",
+    
   ];
 
   sortOptions: SortOption[] = [

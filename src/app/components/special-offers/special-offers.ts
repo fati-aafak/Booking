@@ -15,9 +15,10 @@ interface RoutePoint {
 
 interface Offer {
   type: string;
-  typeIcon: string;
+  typeIcon: string; // from icons folder
+  headerColor: string; // background color for header bar
   company: string;
-  companyLogo?: string;
+  companyLogo: string; // from offre folder
   duration: string;
   loadType: string;
   containerSize: string;
@@ -38,15 +39,17 @@ export class SpecialOffersComponent {
   offers: Offer[] = [
     {
       type: 'Marine shipping',
-      typeIcon: 'MAERSK.svg',
+      typeIcon: 'marine.svg',
+      headerColor: '#e0efff',
       company: 'MAERSK',
+      companyLogo: 'MAERSK.svg',
       duration: '19h',
       loadType: 'Full Container Load',
       containerSize: "40' Standard",
       origin: {
         location: 'Casablanca Port',
         country: 'MA',
-        flag: '🇲🇦',
+        flag: 'Maroc.svg',
         date: '11/06/2025',
         time: '15:00'
       },
@@ -54,7 +57,7 @@ export class SpecialOffersComponent {
       destination: {
         location: 'Mallorca',
         country: 'SPA',
-        flag: '🇪🇸',
+        flag: 'Mallorca.svg',
         date: '11/05/2025',
         time: '09:10'
       },
@@ -62,22 +65,24 @@ export class SpecialOffersComponent {
     },
     {
       type: 'Truck transport',
-      typeIcon: 'hapag.svg',
+      typeIcon: 'truck.svg',
+      headerColor: '#e0ffed',
       company: 'Hapag-Lloyd',
+      companyLogo: 'hapag.svg',
       duration: '19h',
       loadType: 'Less Container Load',
       containerSize: "20' Standard",
       origin: {
         location: 'Sunnyvale Harbor',
         country: 'CA',
-        flag: '🇨🇦',
+        flag: 'harbor.svg',
         date: '12/07/2025',
         time: '16:30'
       },
       destination: {
         location: 'Tokyo',
         country: 'JPN',
-        flag: '🇯🇵',
+        flag: 'tokyo.svg',
         date: '11/05/2025',
         time: '09:10'
       },
@@ -85,15 +90,17 @@ export class SpecialOffersComponent {
     },
     {
       type: 'Marine shipping',
-      typeIcon: 'Shipping partner.svg',
+      typeIcon: 'marine.svg',
+      headerColor: '#e0efff',
       company: 'HMM',
+      companyLogo: 'Shipping partner.svg',
       duration: '19h',
       loadType: 'Full Container Load',
       containerSize: "40' Standard",
       origin: {
         location: 'Lakeside Wharf',
         country: 'FL',
-        flag: '+',
+        flag: 'harbor.svg',
         date: '14/09/2025',
         time: '18:15'
       },
@@ -101,7 +108,7 @@ export class SpecialOffersComponent {
       destination: {
         location: 'Berlin',
         country: 'GER',
-        flag: '🇩🇪',
+        flag: 'harbor.svg',
         date: '11/05/2025',
         time: '09:10'
       },
@@ -109,15 +116,17 @@ export class SpecialOffersComponent {
     },
     {
       type: 'Air freight',
-      typeIcon: 'cosco.svg',
-      company: 'COSCO Shipping',
+      typeIcon: 'flight.svg',
+      headerColor: '#ffefe0',
+      company: 'COSCO SHIPPING',
+      companyLogo: 'COSCO.svg',
       duration: '19h',
       loadType: 'Full Container Load',
       containerSize: "40' Standard",
       origin: {
         location: 'Riverview Dock',
         country: 'USA',
-        flag: '🇺🇸',
+        flag: 'usa.svg',
         date: '13/08/2025',
         time: '17:45'
       },
@@ -125,7 +134,7 @@ export class SpecialOffersComponent {
       destination: {
         location: 'Paris',
         country: 'FRA',
-        flag: '🇫🇷',
+        flag: 'paris.svg',
         date: '11/05/2025',
         time: '09:10'
       },
