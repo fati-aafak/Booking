@@ -100,7 +100,7 @@ export class SpecialOffersComponent {
       origin: {
         location: 'Lakeside Wharf',
         country: 'FL',
-        flag: 'harbor.svg',
+        flag: 'lakeside.svg',
         date: '14/09/2025',
         time: '18:15'
       },
