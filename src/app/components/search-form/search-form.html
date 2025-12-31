@@ -49,40 +49,9 @@
         </div>
       </div>
 
-      <!-- Second Row: Shipping type and Transport unit type -->
-      <div class="form-group">
-        <label for="shippingType">Shipping type</label>
-        <div class="input-wrapper">
-          <select 
-            id="shippingType"
-            [(ngModel)]="searchForm.shippingType"
-            name="shippingType"
-            class="form-control">
-            <option value="" disabled selected>e.g. Full container load (FCL)</option>
-            <option *ngFor="let type of shippingTypes" [value]="type">{{ type }}</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="transportUnit">
-          Transport unit type
-          <span class="info-icon" title="Information about transport unit types">ℹ️</span>
-        </label>
-        <div class="input-wrapper">
-          <select 
-            id="transportUnit"
-            [(ngModel)]="searchForm.transportUnit"
-            name="transportUnit"
-            class="form-control">
-            <option value="" disabled selected>e.g. 20' Standard</option>
-            <option *ngFor="let unit of transportUnits" [value]="unit">{{ unit }}</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Third Row: Date Selection (full width) -->
-      <div class="form-group date-group full-width">
+      <!-- Third Column: Date Selection -->
+      <div class="form-group date-group">
+        <label>Specific day</label>
         <div class="date-toggle">
           <label class="toggle-option" [class.active]="!searchForm.isInterval" (click)="searchForm.isInterval = false">
             <input 
@@ -112,6 +81,38 @@
             class="form-control"
             onfocus="(this.type='date')"
             onblur="(this.type='text')">
+        </div>
+      </div>
+
+      <!-- Second Row: Shipping type and Transport unit type -->
+      <div class="form-group">
+        <label for="shippingType">Shipping type</label>
+        <div class="input-wrapper">
+          <select 
+            id="shippingType"
+            [(ngModel)]="searchForm.shippingType"
+            name="shippingType"
+            class="form-control">
+            <option value="" disabled selected>e.g. Full container load (FCL)</option>
+            <option *ngFor="let type of shippingTypes" [value]="type">{{ type }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="transportUnit">
+          Transport unit type
+          <span class="info-icon" title="Information about transport unit types">ℹ️</span>
+        </label>
+        <div class="input-wrapper">
+          <select 
+            id="transportUnit"
+            [(ngModel)]="searchForm.transportUnit"
+            name="transportUnit"
+            class="form-control">
+            <option value="" disabled selected>e.g. 20' Standard</option>
+            <option *ngFor="let unit of transportUnits" [value]="unit">{{ unit }}</option>
+          </select>
         </div>
       </div>
     </div>

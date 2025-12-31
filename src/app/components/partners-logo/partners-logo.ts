@@ -14,6 +14,9 @@ interface Partner {
   styleUrls: ['./partners-logo.scss']
 })
 export class PartnersLogoComponent {
+  // Toggle this to enable/disable scrolling animation
+  animate = true;
+
   partners: Partner[] = [
     { name: 'CMA CGM' },
     { name: 'COSCO SHIPPING' },

@@ -1,0 +1,80 @@
+<section class="special-offers" aria-labelledby="special-offers-heading">
+  <div class="container">
+    <h2 id="special-offers-heading">Special offers</h2>
+    <div class="offers">
+      <article class="offer" *ngFor="let offer of offers">
+        <!-- Transport Type Header -->
+        <div class="offer-header">
+          <img [src]="'/images/offre/' + (offer.typeIcon.includes('.svg') ? offer.typeIcon : offer.typeIcon + '.svg')" [alt]="offer.type + ' icon'" class="transport-icon" />
+          <span class="transport-type">{{ offer.type }}</span>
+        </div>
+
+        <!-- Company Name -->
+        <div class="company-name">{{ offer.company }}</div>
+
+        <!-- Details Section -->
+        <div class="offer-details">
+          <div class="detail-item">
+            <span class="detail-label">Duration:</span>
+            <span class="detail-value">{{ offer.duration }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Load Type:</span>
+            <span class="detail-value">{{ offer.loadType }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Container Size:</span>
+            <span class="detail-value">{{ offer.containerSize }}</span>
+          </div>
+        </div>
+
+        <!-- Route Section -->
+        <div class="route-section">
+          <!-- Origin -->
+          <div class="route-point origin">
+            <div class="route-header">
+              <img class="route-flag" [src]="'/images/offre/' + (offer.origin.flag.includes('.svg') ? offer.origin.flag : offer.origin.flag + '.svg')" [alt]="offer.origin.country + ' flag'" />
+              <div class="route-info">
+                <span class="route-location">{{ offer.origin.location }}, {{ offer.origin.country }}</span>
+                <span class="route-label">Departure {{ offer.origin.date }} - {{ offer.origin.time }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Transit Points -->
+          <div class="transit-points" *ngIf="offer.transit && offer.transit.length > 0">
+            <div class="transit-item" *ngFor="let transit of offer.transit">
+              <div class="transit-dot"></div>
+              <span class="transit-duration">Transit {{ transit.duration }}</span>
+            </div>
+          </div>
+
+          <!-- Destination -->
+          <div class="route-point destination">
+            <div class="route-header">
+              <img class="route-flag" [src]="'/images/offre/' + (offer.destination.flag.includes('.svg') ? offer.destination.flag : offer.destination.flag + '.svg')" [alt]="offer.destination.country + ' flag'" />
+              <div class="route-info">
+                <span class="route-location">{{ offer.destination.location }}, {{ offer.destination.country }}</span>
+                <span class="route-label">Arrival {{ offer.destination.date }} - {{ offer.destination.time }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="offer-actions">
+          <button class="btn-view-details">View details</button>
+          <div class="price-actions">
+            <span class="offer-price">{{ offer.price }}</span>
+            <button class="btn-book-now">Book now</button>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- View More Button -->
+    <div class="view-more-container">
+      <button class="btn-view-more">View more →</button>
+    </div>
+  </div>
+</section>

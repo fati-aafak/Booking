@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header';
 import { HeroSectionComponent } from './components/hero-section/hero-section';
 import { PartnersLogoComponent } from './components/partners-logo/partners-logo';
+import { SpecialOffersComponent } from './components/special-offers/special-offers';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,8 @@ import { PartnersLogoComponent } from './components/partners-logo/partners-logo'
     CommonModule,
     HeaderComponent,
     HeroSectionComponent,
-    PartnersLogoComponent
+    PartnersLogoComponent,
+    SpecialOffersComponent
   ],
   templateUrl: './app.html',
   styleUrls: ['./app.scss']

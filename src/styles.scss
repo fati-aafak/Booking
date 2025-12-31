@@ -1,3 +1,22 @@
+/* Fonts: déclarez "Helvetica Neue" (ajoutez les fichiers dans public/fonts/) */
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/fonts/HelveticaNeue.woff2') format('woff2'),
+       url('/fonts/HelveticaNeue.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/fonts/HelveticaNeue-Bold.woff2') format('woff2'),
+       url('/fonts/HelveticaNeue-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Reset et styles globaux */
 * {
   margin: 0;
@@ -6,7 +25,17 @@
 }
 
 body {
-  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Appliquer Helvetica Neue en première préférence, passer sur Inter si non disponible */
+  font-family: 'Helvetica Neue', 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optionnel: régler les poids par défaut */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+p, a, li, span, label, button {
+  font-weight: 400;
 }

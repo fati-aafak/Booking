@@ -1,0 +1,245 @@
+.special-offers {
+  padding: 3rem 1rem;
+  background: #fff;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+   
+    border-radius: 8px;
+    padding: 2rem;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+  }
+
+  .offers {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .offer {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .offer-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .transport-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .transport-type {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #4b5563;
+  }
+
+  .company-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1f2937;
+  }
+
+  .offer-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem 0;
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .detail-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+  }
+
+  .detail-label {
+    color: #6b7280;
+  }
+
+  .detail-value {
+    color: #1f2937;
+    font-weight: 500;
+  }
+
+  .route-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+  }
+
+  .route-point {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .route-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .route-flag {
+    font-size: 1.25rem;
+    line-height: 1;
+    margin-top: 0.125rem;
+    flex-shrink: 0;
+  }
+
+  .route-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    flex: 1;
+  }
+
+  .route-location {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #1f2937;
+  }
+
+  .route-label {
+    font-size: 0.75rem;
+    color: #6b7280;
+  }
+
+  .transit-points {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-left: 1.25rem;
+    padding-left: 0.75rem;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0.25rem;
+      top: -0.25rem;
+      bottom: -0.25rem;
+      width: 1px;
+      background: #e5e7eb;
+    }
+  }
+
+  .transit-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+  }
+
+  .transit-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ff6f61;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .transit-duration {
+    font-size: 0.75rem;
+    color: #6b7280;
+  }
+
+  .offer-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: auto;
+  }
+
+  .btn-view-details {
+    padding: 0.625rem 1rem;
+    background: transparent;
+    border: 1px solid #1a56db;
+    border-radius: 6px;
+    color: #1a56db;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      background: #f3f4f6;
+    }
+  }
+
+  .price-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .offer-price {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+  }
+
+  .btn-book-now {
+    padding: 0.625rem 1.5rem;
+    background: #1a56db;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+      background: #1e40af;
+    }
+  }
+
+  .view-more-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  .btn-view-more {
+    padding: 0.75rem 2rem;
+    background: #ff6f61;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+      background: #e55a4f;
+    }
+  }
+}

@@ -1,33 +1,28 @@
 .partners-section {
-  background: #ffffff;
+  background-color: #F9F9F9;
   padding: 40px 0;
+  
+  
 
   .partners-container {
-    max-width: 1250px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
   }
 
   .partners-box {
-    background: #ffffff;
-    border-radius: 0;
-    padding: 32px 40px;
-    overflow: hidden;
     width: 100%;
+    overflow: hidden;
   }
 
   .partners-track {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 60px;
+    justify-content: flex-start;
+    gap: 48px;
     width: max-content;
+    flex-wrap: nowrap;
     animation: scroll-left 30s linear infinite;
-  }
-
-  /* Pause scrolling on hover */
-  .partners-box:hover .partners-track {
-    animation-play-state: paused;
   }
 
   .partner {
@@ -38,39 +33,70 @@
   }
 
   .partner-logo {
-    height: 45px;
-    max-height: 45px;
+    height: 40px;
+    max-height: 40px;
     width: auto;
     display: block;
+    object-fit: contain;
     filter: grayscale(100%);
     opacity: 0.7;
-    transition: transform 180ms ease, opacity 180ms ease, filter 180ms ease;
+    transition: opacity 200ms ease, filter 200ms ease;
   }
 
   .partner-logo:hover {
-    filter: grayscale(0%);
+    filter: grayscale(100%);
     opacity: 1;
-    transform: scale(1.05);
+  }
+
+  /* Pause animation on hover and for accessibility */
+  .partners-section:hover .partners-track,
+  .partners-track:hover {
+    animation-play-state: paused;
   }
 
   @keyframes scroll-left {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .partners-track {
+      animation: none;
+    }
   }
 
   @media (max-width: 768px) {
-    .partners-box {
-      padding: 20px 16px;
+    padding: 30px 0;
+
+    .partners-container {
+      padding: 0 16px;
     }
 
     .partners-track {
-      gap: 30px;
+      gap: 24px;
+      flex-wrap: nowrap;
       animation-duration: 20s;
     }
 
     .partner-logo {
-      height: 35px;
-      max-height: 35px;
+      height: 32px;
+      max-height: 32px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .partners-track {
+      gap: 16px;
+      animation-duration: 12s;
+    }
+
+    .partner-logo {
+      height: 28px;
+      max-height: 28px;
     }
   }
 }

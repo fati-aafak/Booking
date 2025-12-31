@@ -1,6 +1,20 @@
 <div class="top-banner">
-  <p>Are you a freight forwarder? Or shipper?</p>
-  <button class="join-btn">Join our marketplace →</button>
+  <p class="announce">
+    <span class="sr-only">Are you a freight forwarder? Or shipper?</span>
+    <span class="marquee" aria-hidden="true">
+      <span class="marquee__inner" data-text="Are you a freight forwarder? Or shipper?  • ">
+        <span>Are you a freight forwarder? Or shipper?</span>
+      </span>
+    </span>
+  </p>
+  <button class="join-btn" aria-label="Join our marketplace">
+    <span class="join-btn__content">
+      <span class="join-btn__label">Join our marketplace</span>
+     <img src="/images/icons/login.svg" alt="" aria-hidden="true" class="btn-icon">
+    </span>
+    <span class="sr-only">Join our marketplace</span>
+  </button>
+  <!-- <button class="join-btn">Join our marketplace →</button> -->
 </div>
 
 <header class="header">

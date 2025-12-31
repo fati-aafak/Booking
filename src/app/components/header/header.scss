@@ -12,6 +12,51 @@
     margin: 0;
   }
 
+  /* screen reader only helper */
+  .sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0,0,0,0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+
+  /* Marquee styles */
+  .announce {
+    display: inline-block;
+    max-width: 70%;
+    min-width: 180px;
+  }
+
+  .marquee {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  .marquee__inner {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 14s linear infinite;
+  }
+
+  .marquee__inner::after {
+    content: attr(data-text);
+    display: inline-block;
+    padding-left: 2rem;
+  }
+
+  .marquee__inner span {
+    display: inline-block;
+    padding-right: 2rem;
+  }
+
+  /* Button structure */
   .join-btn {
     background: white;
     color: #0739A4;
@@ -20,27 +65,124 @@
     border-radius: 4px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    overflow: hidden;
+    position: relative;
+    will-change: transform, box-shadow;
+
+    .join-btn__content {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      vertical-align: middle;
+    }
+
+    .join-btn__label {
+      display: inline-block;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    /* Subtle periodic pulse animation */
+    animation: button-pulse 6s ease-in-out infinite;
 
     &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 24px rgba(7,57,164,0.12);
+      animation-play-state: paused;
+    }
+  }
+
+  @keyframes button-pulse {
+    0%, 100% { transform: none; box-shadow: none; }
+    50% { transform: scale(1.01); box-shadow: 0 8px 24px rgba(7,57,164,0.06); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .join-btn { animation: none; transform: none; box-shadow: none; }
+  }
+
+  /* pause on hover and respect reduced motion */
+  .marquee__inner:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee__inner {
+      animation: none;
+      transform: none;
     }
   }
 
   @media (max-width: 768px) {
     padding: 10px 16px;
     font-size: 12px;
-    flex-wrap: wrap;
     gap: 12px;
+    align-items: center;
+    flex-wrap: nowrap; /* keep on same line when possible */
+
+    .announce {
+      max-width: calc(100% - 140px);
+      min-width: 0;
+      text-align: left;
+    }
 
     p {
-      text-align: center;
+      margin: 0;
     }
 
     .join-btn {
-      padding: 6px 12px;
+      padding: 8px 12px;
+      font-size: 13px;
+      min-width: 110px;
+      max-width: 140px;
+    }
+
+    .marquee__inner {
+      animation-duration: 11s;
+      padding-left: 50%;
+    }
+
+    .join-btn__label {
+      font-size: 13px;
+      max-width: 90px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 8px 12px;
+    font-size: 11px;
+    gap: 8px;
+
+    .announce {
+      max-width: calc(100% - 96px);
+      min-width: 0;
+      text-align: left;
+    }
+
+    /* Keep marquee animated on small screens but shorten duration for readability */
+    .marquee__inner {
+      animation-duration: 9s;
+      padding-left: 35%;
+    }
+
+    .join-btn {
+      /* keep subtle pulse on mobile too */
+      animation: button-pulse 5s ease-in-out infinite;
+      padding: 6px 10px;
       font-size: 12px;
+      min-width: 88px;
+      max-width: 120px;
+    }
+
+    .join-btn__label {
+      font-size: 13px;
+      max-width: 78px;
     }
   }
 }
@@ -93,6 +235,10 @@
       }
     }
 
+    @media (max-width: 1024px) {
+      order: 1;
+    }
+
     @media (max-width: 768px) {
       img {
         max-height: 32px;
@@ -116,7 +262,7 @@
     span {
       width: 100%;
       height: 3px;
-      background: #334155;
+      background: #0739A4;
       border-radius: 3px;
       transition: all 0.3s ease;
       transform-origin: center;
@@ -138,6 +284,7 @@
 
     @media (max-width: 1024px) {
       display: flex;
+      order: 3;
     }
   }
 
@@ -287,13 +434,31 @@
       gap: 8px;
 
       .btn-quote {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #FFECE0;
+        color: #FF6B35;
+        padding: 8px 14px;
+        border: 2px;
+        font-weight: 700;
+        box-shadow: 0 6px 18px rgba(255,107,53,0.08);
+      }
+
+      .btn-signup,
+      .btn-login {
         display: none;
       }
 
       button {
-        padding: 8px 16px;
+        padding: 8px 12px;
         font-size: 13px;
       }
+
+      /* center the actions block between logo and menu on tablet/mobile */
+      order: 2;
+      flex: 1;
+      justify-content: center;
     }
 
     @media (max-width: 768px) {
