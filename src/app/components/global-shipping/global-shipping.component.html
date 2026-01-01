@@ -1,0 +1,50 @@
+<section class="global-shipping" aria-labelledby="global-shipping-heading">
+  <div class="global-shipping-container">
+    <div class="content-wrapper">
+      <!-- Left side - Video -->
+      <div class="video-section">
+        <video 
+          #shippingVideo
+          autoplay 
+          muted 
+          loop 
+          playsinline 
+          class="shipping-video"
+          (loadeddata)="onVideoLoaded()"
+          (error)="onVideoError()"
+          (canplay)="onVideoCanPlay()"
+          preload="auto">
+          <source src="./images/vid.mp4" type="video/mp4">
+          <source src="/images/vid.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div *ngIf="!videoLoaded && !videoError" class="video-loading">
+          <span>Chargement de la vidéo...</span>
+        </div>
+        <div *ngIf="videoError" class="video-error">
+          <p>La vidéo n'a pas pu charger. Veuillez actualiser la page.</p>
+        </div>
+      </div>
+
+      <!-- Right side - Text content -->
+      <div class="content-section">
+        <div class="content-inner">
+          <h3 class="subtitle">Marketplace</h3>
+          <h2 id="global-shipping-heading" class="main-title">
+            <span class="text-white">The </span> 
+            <span class="text-orange"> Global Shipping</span> 
+            <span class="text-white">marketplace</span>
+          </h2>
+          <p class="description">Easily discover, compare, and connect with verified shipping providers all in one place.</p>
+          <p class="description">Our marketplace brings together top carriers and freight forwarders, helping you find the best solutions for your cargo needs with full transparency and confidence.</p>
+          <button class="explore-btn">
+            Explore the marketplace
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 12L10 8L6 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

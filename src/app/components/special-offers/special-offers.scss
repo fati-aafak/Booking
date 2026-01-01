@@ -1,19 +1,20 @@
 .special-offers {
   padding: 60px 0;
-  background: #f8f9fa;
+  background-color: #f8fafc;
 
   .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 24px;
   }
 
   h2 {
-    font-size: 32px;
+    font-size: 40px;
     font-weight: 700;
-    color: #2c3e50;
+    color: #1e293b;
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 48px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
 
   .offers-grid {
@@ -21,46 +22,50 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
     margin-bottom: 40px;
-  }
 
-  .offer-card {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
-
-    &:hover {
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-      transform: translateY(-2px);
+    @media (max-width: 1200px) {
+      grid-template-columns: 1fr;
     }
   }
 
-  // Header with transport type
+  .offer-card {
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e2e8f0;
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+  }
+
   .offer-header {
     padding: 12px 20px;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
 
     .transport-icon {
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
     }
 
     .transport-type {
       font-size: 14px;
       font-weight: 600;
-      color: #2c3e50;
+      color: #1e40af;
     }
   }
 
-  // Card content
   .offer-content {
-    padding: 20px;
+    padding: 20px 24px 24px;
   }
 
-  // Company section
+  // Company Section
   .company-section {
     display: flex;
     align-items: center;
@@ -68,22 +73,23 @@
     margin-bottom: 16px;
 
     .company-logo {
-      height: 32px;
+      height: 24px;
       width: auto;
       object-fit: contain;
     }
 
     .company-name {
-      font-size: 16px;
-      font-weight: 600;
-      color: #2c3e50;
+      font-size: 18px;
+      font-weight: 700;
+      color: #1e293b;
     }
   }
 
-  // Offer details (duration, load type, container size)
+  // Offer Details - Horizontal badges
   .offer-details {
     display: flex;
-    gap: 16px;
+    align-items: center;
+    gap: 12px;
     margin-bottom: 20px;
     flex-wrap: wrap;
 
@@ -91,264 +97,271 @@
       display: flex;
       align-items: center;
       gap: 6px;
+      padding: 6px 12px;
+      background-color: #f1f5f9;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
 
       .detail-icon {
         width: 16px;
         height: 16px;
-        opacity: 0.6;
+        object-fit: contain;
       }
 
       .detail-text {
         font-size: 13px;
-        color: #5a6c7d;
+        color: #475569;
+        font-weight: 500;
+        white-space: nowrap;
       }
     }
   }
 
-  // Route timeline
+  // Route Timeline - Horizontal Layout
   .route-timeline {
     margin-bottom: 24px;
-    padding: 16px 0;
+    padding: 0;
   }
 
   .timeline-container {
     position: relative;
-    padding-left: 30px;
-  }
-
-  .timeline-line {
-    position: absolute;
-    left: 7px;
-    top: 30px;
-    bottom: 30px;
-    width: 2px;
-    background: linear-gradient(180deg, #3b82f6 0%, #3b82f6 100%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
   }
 
   .route-point {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
     position: relative;
-    margin-bottom: 16px;
+    z-index: 2;
+    flex: 0 0 auto;
+    max-width: 45%;
 
-    &:last-child {
-      margin-bottom: 0;
+    &.origin-point {
+      align-items: flex-start;
+    }
+
+    &.destination-point {
+      align-items: flex-end;
+      text-align: right;
+
+      .route-location-row {
+        flex-direction: row-reverse;
+      }
     }
   }
 
   .route-dot {
-    position: absolute;
-    left: -27px;
-    top: 4px;
     width: 14px;
     height: 14px;
     border-radius: 50%;
-    background: white;
-    border: 3px solid #3b82f6;
-    z-index: 2;
-  }
+    flex-shrink: 0;
 
-  .origin-dot {
-    background: #3b82f6;
-    border-color: #3b82f6;
-  }
+    &.origin-dot {
+      background-color: #dc2626;
+      border: 3px solid #ffffff;
+      box-shadow: 0 0 0 2px #fee2e2;
+    }
 
-  .destination-dot {
-    background: #3b82f6;
-    border-color: #3b82f6;
+    &.destination-dot {
+      background-color: #0739A4;
+      border: 3px solid #ffffff;
+      box-shadow: 0 0 0 2px #dbeafe;
+    }
   }
 
   .route-info {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+    flex: 1;
   }
 
   .route-location-row {
     display: flex;
     align-items: center;
     gap: 8px;
+    margin-bottom: 4px;
 
     .route-flag {
-      width: 20px;
-      height: 15px;
+      width: 22px;
+      height: 16px;
       object-fit: cover;
       border-radius: 2px;
+      border: 1px solid #e2e8f0;
     }
 
     .route-location {
-      font-size: 14px;
-      font-weight: 600;
-      color: #2c3e50;
+      font-size: 15px;
+      font-weight: 700;
+      color: #1e293b;
+      line-height: 1.3;
     }
   }
 
   .route-date {
     font-size: 12px;
-    color: #7d8a99;
-    margin-left: 28px;
+    color: #64748b;
+    display: block;
+    font-weight: 400;
   }
 
-  // Transit points
+  // Timeline Line - Horizontal
+  .timeline-line {
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    top: 27px;
+    height: 2px;
+    background: linear-gradient(to right, 
+      #dc2626 0%, 
+      #f97316 50%,
+      #2563eb 100%);
+    z-index: 1;
+  }
+
+  // Transit Points - On horizontal line
   .transit-points {
-    position: relative;
+    position: absolute;
+    left: 50%;
+    top: 27px;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    display: flex;
+    gap: 40px;
   }
 
   .transit-point {
-    position: relative;
-    margin: 12px 0;
-    display: flex;
-    align-items: center;
-  }
-
-  .transit-dot {
-    position: absolute;
-    left: -27px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #ff9d00;
-    border: 2px solid white;
-    z-index: 2;
-  }
-
-  .transit-info {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    align-items: center;
+    gap: 8px;
+    position: relative;
 
-    .transit-label {
-      font-size: 12px;
-      color: #ff9d00;
-      font-weight: 600;
+    .transit-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #f97316;
+      border: 2px solid #ffffff;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 2px #fff7ed;
     }
 
-    .transit-duration {
-      font-size: 11px;
-      color: #7d8a99;
+    .transit-info {
+      position: absolute;
+      top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #ffffff;
+      padding: 4px 10px;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border: 1px solid #fed7aa;
+      white-space: nowrap;
+
+      .transit-label {
+        font-size: 10px;
+        color: #f97316;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .transit-duration {
+        font-size: 11px;
+        color: #1e293b;
+        font-weight: 600;
+      }
     }
   }
 
-  // Footer actions
+  // Footer
   .offer-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-top: 20px;
-    border-top: 1px solid #e8ecef;
-  }
+    border-top: 1px solid #e2e8f0;
 
-  .btn-view-details {
-    padding: 10px 20px;
-    background: white;
-    border: 1px solid #0739A4;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 500;
-    color: #0739A4;
-    cursor: pointer;
-    transition: all 0.2s ease;
+    .footer-left {
+      display: flex;
+      gap: 10px;
+    }
 
-    &:hover {
-      border-color: #3b82f6;
-      color: #3b82f6;
-      background: #f0f7ff;
+    .btn-view-details {
+      padding: 10px 20px;
+      border: 1.5px solid #0739A4;
+      background-color: #ffffff;
+      color: #0739A4;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: #eff6ff;
+      }
+    }
+
+    .btn-book-now {
+      padding: 10px 20px;
+      border: none;
+      background-color: #0739A4;
+      color: #ffffff;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: #0739A4;
+      }
+    }
+
+    .price-section {
+      .offer-price {
+        font-size: 24px;
+        font-weight: 700;
+        color: #1e293b;
+      }
     }
   }
 
-  .price-section {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .offer-price {
-    font-size: 20px;
-    font-weight: 700;
-    color: #2c3e50;
-  }
-
-  .btn-book-now {
-    padding: 10px 24px;
-    background: #1e40af;
-    border: none;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 600;
-    color: white;
-    cursor: pointer;
-    transition: all 0.2s ease;
-
-    &:hover {
-      background: #1e3a8a;
-      transform: translateY(-1px);
-    }
-  }
-
-  // View more button
+  // View More Button
   .view-more-container {
-    text-align: center;
+    display: flex;
+    justify-content: center;
     margin-top: 40px;
   }
 
   .btn-view-more {
     padding: 12px 32px;
-    background: #ff6b35;
+    background-color: #f97316;
+    color: #ffffff;
     border: none;
     border-radius: 8px;
     font-size: 15px;
     font-weight: 600;
-    color: white;
     cursor: pointer;
-    display: inline-flex;
+    display: flex;
     align-items: center;
     gap: 8px;
     transition: all 0.2s ease;
 
-    svg {
-      transition: transform 0.2s ease;
-    }
-
     &:hover {
-      background: #e55a28;
-      transform: translateY(-2px);
-
-      svg {
-        transform: translateX(4px);
-      }
-    }
-  }
-
-  // Responsive
-  @media (max-width: 968px) {
-    .offers-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  @media (max-width: 640px) {
-    padding: 40px 0;
-
-    h2 {
-      font-size: 24px;
-      margin-bottom: 30px;
+      background-color: #ea580c;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
     }
 
-    .offer-footer {
-      flex-direction: column;
-      gap: 12px;
-      align-items: stretch;
-
-      .price-section {
-        flex-direction: column;
-        gap: 12px;
-
-        .btn-book-now {
-          width: 100%;
-        }
-      }
-
-      .btn-view-details {
-        width: 100%;
-      }
+    svg {
+      width: 16px;
+      height: 16px;
     }
   }
 }

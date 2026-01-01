@@ -1,0 +1,140 @@
+.global-shipping {
+  background-color: #042368; // Dark blue background
+  padding: 80px 0;
+  
+  .global-shipping-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .content-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 40px;
+    }
+  }
+
+  .video-section {
+    flex: 1;
+    position: relative;
+    min-height: 300px;
+    
+    .shipping-video {
+      width: 100%;
+      height: auto;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      background: #000;
+    }
+
+    .video-loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .video-error {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      
+      p {
+        margin: 0;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .content-section {
+    flex: 1;
+    
+    .content-inner {
+      max-width: 500px;
+    }
+  }
+
+  .subtitle {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+
+  .main-title {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    
+    @media (max-width: 768px) {
+      font-size: 32px;
+    }
+
+    .text-white {
+      color: #ffffff;
+    }
+
+    .text-orange {
+      color: #ff6701;
+    }
+  }
+
+  .description {
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    opacity: 0.9;
+  }
+
+  .explore-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #FF6701; // Orange color
+    color: #ffffff;
+    border: none;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 32px;
+
+    &:hover {
+      background-color: #FF6701;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+    }
+
+    svg {
+      transition: transform 0.3s ease;
+    }
+
+    &:hover svg {
+      transform: translateX(4px);
+    }
+  }
+}

@@ -4,6 +4,7 @@ import { HeaderComponent } from './components/header/header';
 import { HeroSectionComponent } from './components/hero-section/hero-section';
 import { PartnersLogoComponent } from './components/partners-logo/partners-logo';
 import { SpecialOffersComponent } from './components/special-offers/special-offers';
+import { GlobalShippingComponent } from './components/global-shipping/global-shipping.component';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ import { SpecialOffersComponent } from './components/special-offers/special-offe
     HeaderComponent,
     HeroSectionComponent,
     PartnersLogoComponent,
-    SpecialOffersComponent
+    SpecialOffersComponent,
+    GlobalShippingComponent
   ],
   templateUrl: './app.html',
   styleUrls: ['./app.scss']
